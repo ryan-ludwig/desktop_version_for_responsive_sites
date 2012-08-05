@@ -1,0 +1,135 @@
+<p>
+	A common practice for mobile websites has been to give the user an option view the full desktop site, often through a link on the footer.  This works well when they are actually separate sites, with different urls.  For example, http://m.facebook.com and http://www.facebook.com.
+</p>
+
+<p>
+	With responsive design however, there is only one url (which is awesome), and the stylesheet is reformatting the site based on screen resolution rather than serving completely different pages.  Since there is no separate URL to point them to, how do we give our users the option of the "desktop view" within a responsive design?
+</p>
+
+<p>
+	There are three steps we need to take:
+</p>
+
+<ol>
+	<li>
+		<a href="#stylesheets">Generate two stylesheets - one with media queries, one without</a>
+	</li>
+	<li>
+		<a href="#set_cookie">Set a cookie to keep the user's view choice persistent</a>
+	</li>
+	<li>
+		<a href="#retrieve_cookie">Retrieve the cookie and serve different stylesheets and (optionally) javascript</a>
+	</li>
+</ol>
+
+<section id="stylesheets">
+	<h2>Step 1:  Generate 2 stylesheets - one with media queries, one without.</h2>
+
+	<p>
+		Unless you're using a <a href="https://github.com/scottjehl/Respond" rel="external">shiv</a>, you may be doing this anyway for IE8 and below. The payoffs for those IE users are that you don't need to rely on javascript, you load 1 less resource, and can avoid some pesky bugs. Using SASS or LESS, it's not much extra work to generate an additional media query-free file. 
+	</p>
+	<p>
+		Here's a SASS example.  There are a few ways you can do this, ultimately you just need to end up with one CSS file that includes media queries, and one CSS file that doesn't / contains formatting for the desktop view.
+	</p>
+
+	<h3>For a Mobile-First Technique:</h3>
+
+	1 main .scss file
+	1 _mediaqueries partial
+	1 tablet .scss
+	1 desktop .scss file
+
+	- run through the export process.
+
+	<p>
+		Lovely, now we have two stylesheets, one with media queries and one without.
+	</p>
+
+</section>
+
+<section id="set_cookie">
+	<h2>Step 2: Set a cookie if the user wants to change views.</h2>
+
+	<p>
+		Following the progressive enhancement philosophy we should make this work server side first, and add javascript enhancements second.
+	</p>
+	<p>
+		We'll make two links in our footer, one for mobile and one for desktop.
+	</p>
+
+	<textarea>
+		<a href="set_cookie.php?view_option=responsive">Mobile</a>
+		<a href="set_cookie.php?view_option=desktop">Desktop</a>
+	</textarea>
+
+	<p>
+		Now let's build set_cookie.php:
+	</p>
+
+	<textarea>
+
+
+	// set a variable from our GET parameter
+	$view_option = $_GET['view_option']; 
+
+	// set a cookie based on that variable
+	if ($view_option == "responsive") {
+		setcookie("view_option", "responsive", time()+3600, "/");
+	} else {
+		// or this essentially removes the cookie
+		setcookie("view_option", "desktop", time()-3600, "/");
+	}
+
+	// Redirect back to the page they came from.
+	header("Location: " . $_SERVER['HTTP_REFERER']);
+
+
+	</textarea>
+
+</section>
+
+
+<section id="retrieve_cookie">
+<h2>Step 3: Retrieve the cookie and serve different stylesheets and javascript.</h2>
+
+<p>
+	In the previous section we set a cookie and redirected back to the page they clicked the footer link from.  So now we within the head section of all of our pages, we'll include some PHP to read the cookie and serve the appropriate stylesheet.
+</p>
+
+<h3>Within the head section...</h3>
+
+<textarea>
+
+// check cookies and serve the appropriate stylesheet.
+if ($_COOKIE['view_option']=="responsive") {
+
+	// For responsive viewers (default)...
+	echo '
+		<!-- Load the resonponsive stylesheet for browsers greater than IE8 or not IE. -->
+		<!--[if gt IE 8]><!-->
+		<link rel="stylesheet" media="all" href="css/responsive.css" />
+		<!--<![endif]-->
+
+		<!-- Load the desktop stylesheet IE8 and below. -->
+		<!--[if lte IE 8]>
+		<link rel="stylesheet" media="all" href="css/desktop.css" />
+		<![endif]-->
+	';
+} else {
+	// For desktop viewers
+	echo '
+		<!-- Only load the desktop stylesheet -->
+		<link rel="stylesheet" media="all" href="css/desktop.css" />
+	';
+}
+
+</textarea>
+
+<p>
+	At this point, the users are nowing seeing the desktop layout via stylesheet if they selected the desktop view.  But what if your site also uses javascript, possibly to set different interactions or load different scripts for different screen sizes?  Since the screen size is still small, we'll need to tell javascript what the user really wants.
+</p>
+
+
+</section>
+
+

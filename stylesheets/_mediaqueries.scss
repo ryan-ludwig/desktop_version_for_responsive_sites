@@ -1,0 +1,9 @@
+// PORTRAIT TABLET AND UP
+@media (min-width: 640px) {
+   //@import "tablet.scss";
+}
+
+// DEFAULT DESKTOP
+@media (min-width: 960px) {
+   @import "desktop.scss";
+}

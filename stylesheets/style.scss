@@ -1,0 +1,18 @@
+@import "_normalize.scss";
+
+
+h1:after {
+   content: " Mobile";
+}
+
+.container {
+   margin: 0 1em;
+}
+
+
+/* FOR GOOD BROWSERS & IE9+ 
+@import "_mediaqueries.scss";
+*/
+
+/* NON-REPONSIVE STYLESHEETS...*/
+@import "desktop.scss";
