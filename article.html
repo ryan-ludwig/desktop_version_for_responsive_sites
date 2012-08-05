@@ -15,7 +15,7 @@
 		<a href="#stylesheets">Generate two stylesheets - one with media queries, one without</a>
 	</li>
 	<li>
-		<a href="#set_cookie">Set a cookie to keep the user's view choice persistent</a>
+		<a href="#set_cookie">When the user clicks a link to change view options, we'll set a cookie to keep the user's view choice persistent</a>
 	</li>
 	<li>
 		<a href="#retrieve_cookie">Retrieve the cookie and serve different stylesheets and (optionally) javascript</a>
@@ -96,7 +96,9 @@
 	In the previous section we set a cookie and redirected back to the page they clicked the footer link from.  So now we within the head section of all of our pages, we'll include some PHP to read the cookie and serve the appropriate stylesheet.
 </p>
 
-<h3>Within the head section...</h3>
+<h3>Stylesheets</h3>
+
+<h4>Within the head section...</h4>
 
 <textarea>
 
@@ -126,7 +128,13 @@ if ($_COOKIE['view_option']=="responsive") {
 </textarea>
 
 <p>
-	At this point, the users are nowing seeing the desktop layout via stylesheet if they selected the desktop view.  But what if your site also uses javascript, possibly to set different interactions or load different scripts for different screen sizes?  Since the screen size is still small, we'll need to tell javascript what the user really wants.
+	At this point, the users are nowing seeing the desktop layout from the stylesheet if they selected the desktop view.  But what if your site also uses javascript, possibly to set different interactions or load different scripts for different screen sizes?  Since the screen size is still small, we'll need to tell javascript what the user really wants.
+</p>
+
+<h3>JavaScript</h3>
+
+<p>
+	For this demo, I'm going to use jQuery and the <a href="https://github.com/carhartl/jquery-cookie">jQuery Cookie plugin</a> to read and write our cookies.  If you're a <a href="http://zeptojs.com/">Zepto.js</a> user there's a also a <a href="https://github.com/dcompute/Zepto-Cookie">port</a>.
 </p>
 
 

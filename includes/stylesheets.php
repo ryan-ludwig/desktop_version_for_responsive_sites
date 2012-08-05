@@ -1,8 +1,16 @@
 <?php
 // check cookies and serve the appropriate stylesheet.
-if ($_COOKIE['view_option']=="responsive") {
 
-	// For responsive viewers (default)...
+$view_option = $_COOKIE['view_option'];
+
+if ($view_option == "desktop") {
+	// For desktop viewers
+	echo '
+		<!-- Only load the desktop stylesheet -->
+		<link rel="stylesheet" media="all" href="stylesheets/desktop.css" />
+	';
+} else {
+	// For responsive viewers. Default.
 	echo '
 		<!-- Load the resonponsive stylesheet for browsers greater than IE8 or not IE. -->
 		<!--[if gt IE 8]><!-->
@@ -14,11 +22,6 @@ if ($_COOKIE['view_option']=="responsive") {
 		<link rel="stylesheet" media="all" href="stylesheets/desktop.css" />
 		<![endif]-->
 	';
-} else {
-	// For desktop viewers
-	echo '
-		<!-- Only load the desktop stylesheet -->
-		<link rel="stylesheet" media="all" href="stylesheets/desktop.css" />
-	';
 }
+
 ?>
