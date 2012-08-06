@@ -12,10 +12,10 @@
 			</header>
 
 			<?php include_once("article.html"); ?>
-			
+
 		</article>
 
-		<?php include_once("footer_links.php"); ?>
+		<?php include_once("includes/footer_links.php"); ?>
 
 		<script>
 			var viewOption = "<?php echo $view_option; ?>";

@@ -17,7 +17,7 @@ if ($view_option == "desktop") {
 		<link rel="stylesheet" media="all" href="stylesheets/responsive.css" />
 		<!--<![endif]-->
 
-		<!-- Load the desktop stylesheet IE8 and below. -->
+		<!-- Load the desktop stylesheet for IE8 and below. -->
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" media="all" href="stylesheets/desktop.css" />
 		<![endif]-->
