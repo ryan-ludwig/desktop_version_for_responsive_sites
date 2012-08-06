@@ -69,10 +69,10 @@
 
 
 <section id="retrieve_cookie">
-	<h2>Step 3: Retrieve the cookie and serve different stylesheets and javascript.</h2>
+	<h2>Step 3: Retrieve the cookie and serve different stylesheets / other assets.</h2>
 
 	<p>
-		In the previous section we set a cookie and redirected back to the page they clicked the footer link from.  So now we within the head section of all of our pages, we'll include some PHP to read the cookie and serve the appropriate stylesheet.
+		In the previous section we set a cookie and redirected back to the page they clicked the footer link from.  So now within the head section of all of the pages on our site, we'll include some PHP to read the cookie and serve the appropriate stylesheet.
 	</p>
 
 	<h3>Stylesheets</h3>
@@ -85,8 +85,18 @@
 		At this point, the users are nowing seeing the desktop layout from the stylesheet if they selected the desktop view.  But what if your site also uses javascript, possibly to set different interactions or load different scripts for different screen sizes?  Since the screen size is still small, we'll need to tell javascript what the user really wants.
 	</p>
 
-	<h3>JavaScript</h3>
+	<h3>JavaScript, Images, and other bits.</h3>
+
+	<p>
+		Throughout the rest of the page we now have a php variable which we can run contitionals against, "$view_option".  Some responsive sites load or execute different javascript depending on device width.  Since the device width remains unchanged, but the user wants the full enchilada, we can test against $view_option to load desktop assets as needed.
+	</p>
 
 </section>
 
 
+<section>
+	<h2>Potential Issues</h2>
+	<p>
+		The main issue that comes to mind is that it's possible for the user to have cookies disabled. Open to suggestions for storing the user preference, ideally for at least 24 hours.
+	</p>
+</section>
