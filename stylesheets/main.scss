@@ -7,6 +7,6 @@ h1:after {
 @import "_mediaqueries.scss";
 
 /* For non responsive import directly
-@import "tablet.scss";
-@import "desktop.scss";
+@import "_tablet.scss";
+@import "_desktop.scss";
 */
