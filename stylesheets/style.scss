@@ -1,18 +1,12 @@
-@import "_normalize.scss";
-
-
+/* Start mobile first, the absensce of a media query is the first media query. */
 h1:after {
    content: " Mobile";
 }
 
-.container {
-   margin: 0 1em;
-}
-
-
-/* FOR GOOD BROWSERS & IE9+ 
+/* For responsive import the media queries which imports tablet and desktop css inside */
 @import "_mediaqueries.scss";
-*/
 
-/* NON-REPONSIVE STYLESHEETS...*/
+/* For non responsive import directly
+@import "tablet.scss";
 @import "desktop.scss";
+*/

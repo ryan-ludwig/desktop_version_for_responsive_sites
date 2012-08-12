@@ -5,26 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-
-		<article class="container">
-			<header>
-				<h1>A Different Page to check if the cookie persists.</h1>
-			</header>
-
-			<?php include_once("article.html"); ?>
-			
-		</article>
-
-		<?php include_once("includes/footer_links.php"); ?>
-
-		<script>
-			var viewOption = "<?php echo $view_option; ?>";
-			
-			if (viewOption === "desktop") {
-				// load some desktop specific scripts here.
-			} else {
-				// run non desktop specific scripts.
-			}
-		</script>
+		<div class="container">
+			<h1>Demo Page 2</h1>
+			<p>
+				<a href="index.php">Demo Page 1</a> to see user choice throughout site</a>.
+			</p>
+			<?php include_once("includes/footer_links.php"); ?>
+		</div>
 	</body>
 </html>

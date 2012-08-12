@@ -1,3 +1,7 @@
+<header>
+	<h1>Giving Users the Option of Viewing the Desktop Version of your Responsive Site</h1>
+</header>
+
 <p>
 	A common practice for mobile websites has been to give the user an option view the full desktop site, often through a link on the footer.
 </p>
@@ -12,13 +16,13 @@
 
 <ol>
 	<li>
-		<a href="#stylesheets">Generate two stylesheets - one with media queries, one without</a>
+		<a href="#stylesheets">Generate two stylesheets - one with media queries, one without.</a>
 	</li>
 	<li>
-		<a href="#set_cookie">When the user clicks a link to change view options, we'll set a cookie to keep the user's view choice persistent</a>
+		<a href="#set_cookie">Set a cookie when the user clicks a link to keep the choice persistent throughout the rest of our site.</a>
 	</li>
 	<li>
-		<a href="#retrieve_cookie">Retrieve the cookie and serve a different stylesheets and potentially other content (javascript, images, etc.)</a>
+		<a href="#retrieve_cookie">Retrieve the cookie and use it's value to decide what stylesheets and other content (javascript, images, etc.) to serve.</a>
 	</li>
 </ol>
 
@@ -50,9 +54,6 @@
 <section id="set_cookie">
 	<h2>Step 2: Set a cookie if the user wants to change views.</h2>
 
-	<p>
-		Following the progressive enhancement philosophy we should make this work server side first, and add javascript enhancements second.
-	</p>
 	<p>
 		We'll make two links in our footer, one for mobile and one for desktop.
 	</p>
@@ -97,6 +98,8 @@
 <section>
 	<h2>Potential Issues</h2>
 	<p>
-		The main issue that comes to mind is that it's possible for the user to have cookies disabled. Open to suggestions for storing the user preference, ideally for at least 24 hours.
+		It's possible for the user to have cookies disabled. Clicking the link would have no effect.
 	</p>
+	<p>
+		Caching.  If you're making static caches of the entire page, things will bork.  Make sure the head section, the footer links, and any areas that check against $view_option aren't cached.
 </section>

@@ -4,9 +4,8 @@
 $view_option = $_COOKIE['view_option'];
 
 if ($view_option == "desktop") {
-	// For desktop viewers
+	// For users who made a desktop choice 
 	echo '
-		<!-- Only load the desktop stylesheet -->
 		<link rel="stylesheet" media="all" href="stylesheets/desktop.css" />
 	';
 } else {

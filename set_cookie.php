@@ -1,13 +1,14 @@
 <?php
 
-// set a variable from our get parameter
+// set variable from a get parameter
 $view_option = $_GET['view_option']; 
 
 // set a cookie based on that variable
 if ($view_option == "desktop") {
+	// The user wanted desktop, so set a cookie that lasts for one hour
 	setcookie("view_option", "desktop", time()+3600, "/");
 } else {
-	// Else we want responsive, so remove the desktop cookie if there is one
+	// Else the user want to go back to responsive, so remove the cookie if there is one
 	setcookie("view_option", "desktop", time()-3600, "/");
 }
 
