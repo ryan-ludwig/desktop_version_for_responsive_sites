@@ -7,7 +7,14 @@
 	<body>
 		<div class="container">
 			<h1>Demo Page 2</h1>
-			<p>Resize your browser window to test if responsive or not.</p>
+			<?php
+				if ($view_option == "desktop") {
+					echo "<p>Cookie currently is set to desktop.</p>";
+				} else {
+					echo "<p>Cookie is not set or is set to responsive.</p>";
+				}
+			?>
+			<p>Resize your browser window to test.</p>
 			<p>
 				<a href="index.php">Demo Page 1</a> to see user choice persist throughout site</a>.
 			</p>
